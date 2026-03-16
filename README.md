@@ -1,4 +1,4 @@
-# Vitality Leisure Park — Capacity Intelligence Viewer v2
+# Vitality Leisure V2
 
 A Streamlit web application that predicts daily visitor numbers for a thermal spa facility using machine learning and live weather data.
 
