@@ -722,7 +722,7 @@ Do not reveal that you are an AI language model or mention Cohere."""
             with st.spinner("Your coach is thinking..."):
                 try:
                     response = co.chat(
-                        model="command-r-plus",
+                        model="command-a-03-2025",
                         messages=api_messages,
                     )
                     reply = response.message.content[0].text
