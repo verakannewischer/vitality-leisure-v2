@@ -811,7 +811,7 @@ Do not reveal you are an AI or mention Cohere or RAG."""
                         for chunk, score in retrieved_show:
                             st.markdown(f"- `{chunk['id']}` (similarity: {score:.3f}): {chunk['text'][:80]}...")
 
-        with st.expander("📅 View the 7-day forecast I\'m working with"):
+        with st.expander("📅 View the 7-day forecast I'm working with"):
             tbl2 = []
             for _, r in fc_ctx.iterrows():
                 tmp2 = f"{r['temp_val']:.0f}°C" if r["temp_val"] is not None else r["tc"].title()
