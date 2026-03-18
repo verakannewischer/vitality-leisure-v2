@@ -791,26 +791,6 @@ Do not reveal you are an AI or mention Cohere or RAG."""
                 st.session_state.wellness_history = []
                 st.rerun()
 
-        # ── Show what was retrieved (transparency for graders) ────────────────
-        with st.expander("🔍 How the RAG retrieval works"):
-            st.markdown("""
-            **RAG pipeline (from lecture):**
-            1. Menu and fitness schedule are split into ~55 chunks and pre-embedded with Cohere Embed
-            2. Your message is embedded with the same model
-            3. Cosine similarity is computed between your message and all chunks
-            4. The 5 most relevant chunks are added to the prompt
-            5. Cohere Chat generates a response grounded in those specific chunks + the live forecast
-            """)
-            if len(st.session_state.wellness_history) > 1:
-                last_user = next((m["content"] for m in reversed(st.session_state.wellness_history)
-                                  if m["role"] == "user"), None)
-                if last_user:
-                    retrieved_show = retrieve(last_user, top_k=5)
-                    if retrieved_show:
-                        st.markdown("**Last retrieval results:**")
-                        for chunk, score in retrieved_show:
-                            st.markdown(f"- `{chunk['id']}` (similarity: {score:.3f}): {chunk['text'][:80]}...")
-
         with st.expander("📅 View the 7-day forecast I\'m working with"):
             tbl2 = []
             for _, r in fc_ctx.iterrows():
